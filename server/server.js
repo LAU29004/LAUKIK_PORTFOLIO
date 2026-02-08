@@ -14,8 +14,13 @@ mongoose.connect(process.env.MONGO_URI,)
 const app = express();
 
 app.use(cors({
-  origin: "https://lau29004.github.io/LAUKIK_PORTFOLIO/"
+  origin: "https://lau29004.github.io",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
 }));
+
+app.options("*", cors());
+
 
 app.use(express.json());
 
