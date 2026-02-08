@@ -21,42 +21,39 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!name || !email || !message) {
-      setResponseMsg("Please fill all fields");
-      return;
-    }
-
-    setLoading(true);
-    setResponseMsg(null);
-
-    try {
-const response = await fetch(
-  `${BASE_URL}/api/contact`,
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, message }),
+  if (!name || !email || !message) {
+    setResponseMsg("Please fill all fields");
+    return;
   }
-);
 
+  setLoading(true);
+  setResponseMsg(null);
 
-      const data = await response.json();
+  try {
+    const response = await fetch(`${BASE_URL}/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
 
-      if (response.ok) {
-        setResponseMsg(data.msg || "Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" }); // reset form
-      } else {
-        setResponseMsg(data.msg || "Failed to send message.");
-      }
-    } catch (error) {
-      setResponseMsg("Server error. Please try again later.");
+    const data = await response.json();
+
+    if (response.ok) {
+      setResponseMsg(data.msg || "Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      setResponseMsg(data.msg || "Failed to send message.");
     }
+  } catch (error) {
+    setResponseMsg("Server error. Please try again later.");
+  } finally {
+    setLoading(false); // 🔥 ALWAYS runs
+  }
+};
 
-    setLoading(false);
-  };
 
   return (
     <section className="contact-section" id="contact">
