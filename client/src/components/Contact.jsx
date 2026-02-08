@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Contact.css";
 
 const Contact = () => {
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, "");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,14 +33,15 @@ const Contact = () => {
     setResponseMsg(null);
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/contact`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, message }),
-        }
-      );
+const response = await fetch(
+  `${BASE_URL}/api/contact`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message }),
+  }
+);
+
 
       const data = await response.json();
 
