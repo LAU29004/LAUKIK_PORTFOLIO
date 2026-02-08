@@ -13,7 +13,10 @@ mongoose.connect(process.env.MONGO_URI,)
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://lau29004.github.io/LAUKIK_PORTFOLIO/"
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
