@@ -323,6 +323,41 @@
       gap: 40px;
       flex-wrap: wrap
     }
+.paper-btn {
+  display: inline-block;
+  padding: 13px 24px;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 99px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 14.5px;
+  border: 1.5px solid var(--red);
+  cursor: pointer;
+  box-shadow: 0 12px 30px -12px rgba(227, 66, 52, 0.5);
+  transition: transform 0.3s ease,
+              background 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.paper-btn:hover {
+  transform: translateY(-3px);
+  background: var(--ink);
+  color: var(--lime);
+  border-color: var(--ink);
+  box-shadow: 0 12px 30px -12px rgba(23, 16, 31, 0.5);
+}
+
+.paper-btn:active {
+  transform: translateY(-1px);
+}
+
+.paper-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
 
     .tl {
       font-size: clamp(28px, 3.4vw, 50px);
@@ -2676,6 +2711,14 @@
               <li>Benchmarked 5 algorithms, including BiLSTM, on F1-score, precision and AUC-ROC.</li>
               <li>First-author paper presented at <b>IEEE ICEI 2026</b>.</li>
             </ul>
+<a
+  href="https://ieeexplore.ieee.org/document/11447670"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="paper-btn"
+>
+  View Research Paper ↗
+</a>
           </div>
         </article>
       </div>
